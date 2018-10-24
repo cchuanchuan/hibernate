@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="test_n_1.Test_Teacher" table="TEST_TEACHER">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<!-- cascade ： save-update，delete -->
+		<set name="students" table="TEST_STUDENT" inverse="true" cascade="save-update" order-by="id asc" >
+			<key>
+				<column name="teacher_id"></column>
+			</key>
+			<one-to-many class="test_n_1.Test_Student"/>
+		</set>		
+	</class>
+	 <!-- 命名查询  -->
+    <query name="test2"><![CDATA[ from Test_Student s where s.id > 5 and s.id < 11 ]]></query>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-11 16:59:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="common_entities.MyUser" table="MYUSER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="passowrd" type="java.lang.String">
+            <column name="PASSOWRD" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="textContent" type="java.lang.String">
+            <column name="TEXTCONTENT" />
+        </property>
+        <property name="age" type="int"  
+        formula="(
+        	select floor(datediff(now(),s.birthday)/365.25 )
+        	from myuser s
+        	where s.id = id
+        )"/>           
+        
+    </class>
+</hibernate-mapping>

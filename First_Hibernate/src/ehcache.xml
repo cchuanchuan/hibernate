@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+	<!-- 溢出的缓存存储的位置 -->
+	<diskStore path="F:/ehcache/"></diskStore>
+<!-- 	<defaultCache 		
+		//内存中缓存的最大对象数
+		maxElementsInMemory="10000"
+		//磁盘上缓存的最大对象数，默认是0，表示不限制
+		maxElementsOnDisk="10000"
+		//设置 缓存属性是否为永久属性
+	 	eternal="false"
+	 	//对象在多长时间内未被访问，就会失效
+		timeToIdleSeconds="120" 
+		//对象存活时间
+		timeToLiveSeconds="120" 
+		//如果内存中数据超出内存限制，是否要缓存到磁盘上
+		overflowToDisk="true" 
+		//是否在磁盘上持久化。指重启jvm后，数据是否有效。默认为false。
+		diskPersistent="false"
+		//　DiskStore使用的磁盘大小，默认值30MB。每个cache使用各自的DiskStore。
+		diskSpoolBufferSizeMB="30"
+		//如果内存中数据超过内存限制，向磁盘缓存时的策略。默认值LRU，可选FIFO、LFU。
+		//LFU（Less Frequently Used）:
+　　			最少被使用，缓存的元素有一个hit属性，hit值最小的将会被清除缓存
+		memoryStoreEvictionPolicy="LRU"
+		/> -->
+		
+	<!-- 默认缓存配置 -->
+	<defaultCache 		
+		maxElementsInMemory="1000"
+	 	eternal="false"
+		timeToIdleSeconds="120" 
+		timeToLiveSeconds="120" 
+		overflowToDisk="true" />
+	<!-- 自定义的缓存设置，name是必须的,唯一的 -->
+	<cache
+		name="test"
+		maxElementsInMemory="1000"
+	 	eternal="false"
+		timeToIdleSeconds="120" 
+		timeToLiveSeconds="120" 
+		overflowToDisk="true" 
+	/>
+</ehcache>
+

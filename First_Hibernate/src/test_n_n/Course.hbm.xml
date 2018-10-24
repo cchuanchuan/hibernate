@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-13 11:24:34 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="test_n_n.Course" table="COURSE">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <set name="teachers" table="TEACHER_COURSE_ID" inverse="false" lazy="true">
+            <key>
+                <column name="course_id" />
+            </key>
+            <many-to-many class="test_n_n.Teacher">
+            	<column name="teacher_id"></column>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

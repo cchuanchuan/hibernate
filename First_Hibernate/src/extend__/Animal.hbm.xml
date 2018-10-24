@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-8-13 14:20:37 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<!-- 1，值对应一张表，产生冗余列 -->
+<!-- 	<class name="extend__.Animal" table="ANIMAL"
+		discriminator-value="animal">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>
+		<discriminator column="type" type="string"></discriminator>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+
+		<subclass name="extend__.Dog" discriminator-value="dog">
+			<property name="sayDog" column="sayDog"></property>
+		</subclass>
+		<subclass name="extend__.Cat" discriminator-value="cat">
+			<property name="sayCat" column="sayCat"></property>
+		</subclass>
+	</class> -->
+	<!-- 2，每个子类对应一张表 -->
+	<class name="extend__.Animal" table="ANIMAL">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="native" />
+		</id>		
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<joined-subclass name="extend__.Cat" table="cat">
+			<key column="CID"></key>
+			<property name="sayCat" type="string" column="SAYCAT"></property>
+		</joined-subclass>
+		<joined-subclass name="extend__.Dog" table="dog">
+			<key column="DID"></key>
+			<property name="sayDog" type="string" column="SAYDOG"></property>
+		</joined-subclass>	
+		
+	</class>
+</hibernate-mapping>

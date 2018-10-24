@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="test_n_1.Test_Student" table="TEST_STUDENT">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <!-- 多对一 ,多端的配置-->
+        <many-to-one name="teacher" class="test_n_1.Test_Teacher">
+        	<column name="teacher_id"></column>
+        </many-to-one>
+        
+    </class>
+    <!-- 命名查询  -->
+    <query name="test1"><![CDATA[ from Test_Student s where s.id > 5 and s.id < 11 ]]></query>
+</hibernate-mapping>

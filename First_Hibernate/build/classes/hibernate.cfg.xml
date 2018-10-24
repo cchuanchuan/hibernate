@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <!-- 连接数据库的基本信息 -->
+  <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+  <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=TEST</property>
+  <property name="hibernate.connection.username">chuanchuan</property>
+  <property name="hibernate.connection.password">257173</property>
+  <!-- hibernate里面的一些配置，数据库的一些方言 ，开发过程中，要在控制台上显示hibernate执行的语句-->
+  <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <mapping resource="students/enities/Student.hbm.xml"/>
+  <!-- ORM映射关系 
+  <mapping resource="org/easybooks/test/model/vo/UserTable.hbm.xml"/> -->
+ </session-factory>
+</hibernate-configuration>
